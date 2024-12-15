@@ -4,7 +4,7 @@
   "description": "website for highrankapps",
   "main": "index.js",
   "scripts": {
-    "start": "./server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "HARSH BISHT",
@@ -12,5 +12,8 @@
   "dependencies": {
     "express": "^4.21.2",
     "nodemailer": "^6.9.16"
-  }
+  },
+  "bin" : {
+    "execute" : "server.js"
+  } 
 }
