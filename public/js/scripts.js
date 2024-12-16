@@ -111,7 +111,12 @@ if (form) {
             message: document.getElementById('message').value,
         };
 
-        fetch('http://localhost:10000/send-email', {
+        // Dynamically build the request URL based on the current protocol and host
+        const protocol = window.location.protocol; // Detects http:// or https://
+        const host = window.location.host; 
+        const url = `${protocol}//${host}/send-email`; // Combine protocol, domain, and path
+
+        fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

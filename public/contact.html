@@ -27,7 +27,7 @@
             </nav>
         </div>
     </header>
-    
+
 
     <section class="section">
         <div class="container">
@@ -42,31 +42,35 @@
         </div>
     </section>
     <script>
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
+        document.getElementById('contact-form').addEventListener('submit', function (event) {
             event.preventDefault();
-    
+            // Dynamically build the request URL based on the current protocol and host
+            const protocol = window.location.protocol; // Detects http:// or https://
+            const host = window.location.host;
+            const url = `${protocol}//${host}/send-email`; // Combine protocol, domain, and path
+
             // Get form data
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 message: document.getElementById('message').value,
             };
-    
+
             // Send data to the server
-            fetch('http://localhost:10000/send-email', {
+            fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(formData),
             })
-            .then(response => response.json())
-            .then(data => {
-                alert('Message sent successfully!');
-            })
-            .catch(error => {
-                alert('Error sending message.');
-            });
+                .then(response => response.json())
+                .then(data => {
+                    alert('Message sent successfully!');
+                })
+                .catch(error => {
+                    alert('Error sending message.');
+                });
         });
     </script>
 
