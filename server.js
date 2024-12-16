@@ -104,20 +104,32 @@ app.get('*', (req, res) => {
 app.get('/send', (req, res) => {
     res.status(200).json({ success: true });
 });
+app.get('/send', (req, res) => {
+    res.status(200).json({ success: true });
+});
 
-function functionToActiveServer() {
+// This function will check if the server is active
+async function functionToActiveServer() {
     try {
-        const response = axios.get(`${location.protocol}//${location.host}/send`);
-        if(response.status === 200) {
+        // Dynamically build the URL using protocol and host
+        const url = `${req.protocol}://${req.get('host')}/send`;
+
+        // Make the GET request to the /send endpoint
+        const response = await axios.get(url);
+
+        if (response.status === 200) {
             console.log('Server is active');
             return true;
         }
     } catch (error) {
+        console.log('Server is not active');
         return false;
     }
 }
 
-setInterval(functionToActiveServer, 20000);
+// Set an interval to check every 20 seconds
+setInterval(functionToActiveServer, 10000);
+
 
 // Start the server
 app.listen(PORT, () => {
