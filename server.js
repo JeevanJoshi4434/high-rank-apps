@@ -2,9 +2,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-
+const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 10000;
+const env = require('dotenv').config();
 
 // Middleware to parse incoming JSON data
 app.use(bodyParser.json());
@@ -41,23 +42,58 @@ app.get('/portfolio', (req, res) => {
 app.get('/contact', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'contact.html')); // Updated to point to the 'public' folder
 });
+global.location = {
+    protocol: 'http:',
+    host: 'localhost',
+};
 
-// Endpoint to handle contact form submissions
-app.post('/send-email', (req, res) => {
+// EmailJS configuration
+const serviceId = process.env.serviceId; // Your EmailJS service ID
+const templateId = process.env.templateId; // Your EmailJS template ID
+const publicKey = process.env.publicKey; // Your EmailJS Public Key
+const supportEmail = 'support@highrankapps.com'; // Your inbox email
+
+app.post('/send-email', async (req, res) => {
     const { name, email, message } = req.body;
 
     if (!name || !email || !message) {
         return res.status(400).json({ error: 'All fields are required.' });
     }
 
-    console.log(`Contact Form Submission:`);
-    console.log(`Name: ${name}`);
-    console.log(`Email: ${email}`);
-    console.log(`Message: ${message}`);
+    // Prepare template parameters
+    const templateParams = {
+        from_name: name,         // User's name
+        from_mail: email,        // User's email
+        message: message,        // User's message
+        reply_to: supportEmail // Your inbox email for replies
+    };
 
-    // You can integrate email-sending functionality here using a library like nodemailer
-    res.json({ success: true, message: 'Message received. Thank you!' });
+    try {
+        // Prepare the request payload for the API call
+        const data = {
+            service_id: serviceId,
+            template_id: templateId,
+            user_id: publicKey, // Public key as user_id
+            template_params: templateParams
+        };
+
+        // Send email using EmailJS API with Axios
+        const response = await axios.post('https://api.emailjs.com/api/v1.0/email/send', data, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        console.log('Email sent successfully:', response.data);
+
+        // Send a success response to the user
+        res.json({ success: true, message: 'Your message has been sent successfully!' });
+    } catch (error) {
+        console.error('Failed to send email:', error);
+        res.status(500).json({ error: 'Failed to send the email. Please try again later.' });
+    }
 });
+
 
 // Catch-all route for handling undefined routes and redirecting to the home page
 // This should be placed after all the other routes to avoid conflicts with static files

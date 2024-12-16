@@ -111,7 +111,7 @@ if (form) {
             message: document.getElementById('message').value,
         };
 
-        fetch('http://localhost:3000/send-email', {
+        fetch('http://localhost:10000/send-email', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
