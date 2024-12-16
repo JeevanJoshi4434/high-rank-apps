@@ -10,8 +10,14 @@
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="css/style.css">
+    
     <!-- ScrollReveal Animation -->
     <script src="js/scripts.js"></script>
+    <!-- Particles.js -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+
+
    
 </head>
 
@@ -35,19 +41,100 @@
     </header>
     
     <section id="hero" class="section">
+        <div id="particles-js"></div> <!-- Particles container -->
         <div class="container">
             <h2>Your Growth, Our Mission</h2>
             <p>Boost your digital presence with our innovative marketing strategies.</p>
             <a href="#contact" class="cta-btn">Get Started</a>
         </div>
     </section>
-
+    
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 150,
+                    density: {
+                        enable: true,
+                        value_area: 700
+                    }
+                },
+                color: {
+                    value: '#ffec00'
+                },
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#ffec00'
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 40,
+                        size_min: 0.1
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#ffcc00',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 4,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out'
+                }
+            },
+            interactivity: {
+                detect_on: 'window',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'repulse'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    }
+                },
+                modes: {
+                    repulse: {
+                        distance: 100,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+    </script>
+    
     <section id="about" class="section">
         <div class="container">
             <h2>About Us</h2>
             <p>At HighRankApps, we help mobile apps skyrocket to the top in today’s competitive market. As a leading Affiliate Marketing Agency, we specialize in driving results across various app verticals worldwide—ensuring your app gains visibility and thrives with the right users.</p>
             <!-- About Image -->
-            <img src="images/about-us.webp" alt="About Us" style="height: 500px; width: 1200px;">
+            <img src="images/about-us.webp" alt="About Us" style="height: 500px; width: 1000px;">
         </div>
     </section>
 
@@ -84,22 +171,35 @@
             <h2>Our Portfolio</h2>
             <p>Explore some of the success stories from clients we've worked with:</p>
             <div class="portfolio-images">
-                <!-- Portfolio images wrapped in anchor tags -->
+                <!-- Keeping the specified Portfolio Entries -->
                 <a href="portfolio.html">
-                    <img src="images/amazon.png" alt="Portfolio Image 1" style="max-height: 300px; width: 350px;">
+                    <img src="images/myntra.jpg" alt="Portfolio Image 2" class="portfolio-img" style="height: 290px; width: 350px;">
                 </a>
+    
                 <a href="portfolio.html">
-                    <img src="images/faishonova.png" alt="Portfolio Image 2" style="max-height: 290px; width: 350px;">
+                    <img src="images/faishonova.png" alt="faishonnova" class="portfolio-img" style="height: 290px; width: 350px;">
                 </a>
+    
                 <a href="portfolio.html">
-                    <img src="images/myntra.jpg" alt="Portfolio Image 3" style="max-height: 290px; width: 350px;">
+                    <img src="images/to-you.jpeg" alt="to_you" class="portfolio-img" style="height: 290px; width: 350px;">
                 </a>
+    
                 <a href="portfolio.html">
-                    <img src="images/nike.png" alt="Portfolio Image 4" style="height: 290px; width: 350px;">
+                    <img src="images/octa trading.png" alt="Portfolio Image 3" class="portfolio-img" style="height: 290px; width: 350px;">
+                </a>
+    
+                <a href="portfolio.html">
+                    <img src="images/niyo travel.png" alt="niyo" class="portfolio-img" style="height: 290px; width: 350px;">
+                </a>
+    
+                <a href="portfolio.html">
+                    <img src="images/olymp trade .png" alt="olymptrade" class="portfolio-img" style="height: 290px; width: 350px;">
                 </a>
             </div>
         </div>
     </section>
+    
+    
     
 
     <section id="contact" class="section">
@@ -162,82 +262,5 @@
     <p>Contact us: <a href="mailto:support@highrankapps.com" class="mail-link">support@highrankapps.com</a></p>
     <p>2024 High Rank Apps. All rights reserved.</p>
 </footer>
-
-<style>
-    /* Default styling for the email link */
-    footer .mail-link {
-        color: yellow; /* Default yellow color */
-        text-decoration: none; /* Remove underline */
-    }
-
-    /* Add underline and change color on hover */
-    footer .mail-link:hover {
-        color: #ffcc00; /* Darker shade of yellow */
-        text-decoration: underline; /* Underline the email link on hover */
-    }
-
-    /* Hover effect for social links */
-    footer .social-links a:hover {
-        transform: scale(1.1); /* Slightly enlarge icons on hover */
-        transition: transform 0.3s ease; /* Smooth transition effect */
-    }
-
-    /* Media Queries */
-    @media (max-width: 768px) {
-        header nav ul {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        header nav ul li {
-            margin-bottom: 10px;
-        }
-
-        .portfolio-images {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .portfolio-images a img {
-            width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-        }
-
-        .card-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .card {
-            margin-bottom: 20px;
-            width: 80%;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .container {
-            padding: 15px;
-        }
-
-        .cta-btn {
-            font-size: 16px;
-            padding: 12px 20px;
-        }
-
-        header img {
-            max-width: 200px;
-            height: auto;
-        }
-
-        footer .social-links a img {
-            width: 25px;
-            height: 25px;
-        }
-    }
-</style>
 </body>
 </html>
