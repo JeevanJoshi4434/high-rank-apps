@@ -1,0 +1,561 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Body */
+body {
+    line-height: 1.6;
+    color: #fff;
+    background-color: #070607; /* Dark background */
+    overflow-x: hidden;
+}
+
+/* Header Styles */
+header {
+    background-color: #070607;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header a img {
+    max-height: 120px;
+    width: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: #f5a623; /* Highlight color on hover */
+}
+
+
+
+/* Hero Section */
+#hero {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+
+#hero h2 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ffcc00; /* Brighter yellow */
+    transition: transform 0.5s ease-out;
+}
+
+#hero p {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #ffcc00; /* Brighter yellow */
+    font-weight: 400;
+}
+
+.cta-btn {
+    background: #ffcc00; /* Brighter yellow background */
+    color: #070607; /* Dark text */
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    border: 2px solid #ffcc00; /* Brighter yellow border */
+}
+
+.cta-btn:hover {
+    transform: scale(1.1);
+    background-color: #f5a623; /* Darker golden-orange for hover */
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Section Styling */
+.section {
+    padding: 4rem 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideIn 1s ease-out forwards;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: #ffcc00; /* Brighter yellow headings */
+}
+
+.section h2::after {
+    content: '';
+    width: 50px;
+    height: 4px;
+    background: #ffcc00; /* Brighter yellow line under headings */
+    display: block;
+    margin: 0.5rem auto;
+    animation: slideIn 1s ease-out;
+}
+
+.section p {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    color: #fff; /* White text */
+    font-size: 1.2rem;
+}
+
+
+/* Service Cards */
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    animation: fadeIn 1.5s ease-in-out forwards 1s;
+}
+
+.card {
+    background: #070607; /* Dark background for cards */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: #ffcc00; /* Brighter yellow headings */
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #ffcc00; /* Brighter yellow text */
+}
+
+/* Contact Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+    animation: slideIn 1s ease-out forwards 1.5s;
+}
+
+form input,
+form textarea,
+form button {
+    padding: 1rem;
+    border-radius: 15px; /* More rounded edges */
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+form button {
+    background: #ffcc00; /* Brighter yellow background */
+    color: #070607; /* Dark text */
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    font-weight: 600;
+}
+
+form button:hover {
+    background: #f5a623; /* Darker golden-orange for hover */
+}
+
+
+/* Background Effect */
+.background-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-effect .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ffcc00; /* Brighter yellow dots */
+    position: absolute;
+    animation: dotAnimation .5s infinite ease-in-out;
+    pointer-events: none;
+}
+
+.portfolio-images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 columns */
+    gap: 5px; /* Reduced space between the items */
+}
+
+.portfolio-img {
+    height: 290px;
+    width: 100%; /* Ensures images fill the grid space */
+    object-fit: cover; /* Maintains aspect ratio and ensures images are cropped to fit */
+}
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes dotAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+
+/* About Section */
+#about {
+    background-color: #070607; /* Dark background */
+    padding: 4rem 0;
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+}
+
+#about .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+#about h2 {
+    font-size: 2.5rem;
+    color: #ffcc00; /* Brighter yellow heading */
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+#about p {
+    font-size: 1.2rem;
+    color: #ffcc00; /* Brighter yellow text */
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Card-container styling for different sections */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding-top: 2rem;
+}
+/*for smooth site scroll*/
+html {
+    scroll-behavior: smooth;
+}
+.section {
+    padding-top: 100px; /* Adjust this value to ensure space for the heading */
+    padding-bottom: 70px;
+}
+/* About Section */
+#about {
+    background-color: #070607; /* Dark background */
+    padding: 6rem 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards 0.5s;
+}
+
+/* About Section Container */
+#about .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* About Section Heading */
+#about h2 {
+    font-size: 3rem; /* Larger font size */
+    color: #ffcc00; /* Brighter yellow */
+    font-weight: 600;
+    margin-bottom: 1rem;
+    transition: transform 0.5s ease-out;
+}
+
+/* About Section Paragraph */
+#about p {
+    font-size: 1.5rem;
+    color: #ffcc00; /* Brighter yellow */
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+/* About Us Image Styling (if needed) */
+#about img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-top: 2rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+#about img:hover {
+    transform: scale(1.05);
+}
+
+/* Add an underline for the heading if needed */
+#about h2::after {
+    content: '';
+    width: 50px;
+    height: 4px;
+    background: #ffcc00; /* Brighter yellow line */
+    display: block;
+    margin: 0.5rem auto;
+    animation: slideIn 1s ease-out;
+}
+
+/* Optional: Add a call-to-action button for the About section */
+#about .cta-btn {
+    background: #ffcc00; /* Brighter yellow */
+    color: #070607; /* Dark text */
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    display: inline-block;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    margin-top: 2rem;
+    border: 2px solid #ffcc00; /* Brighter yellow border */
+}
+
+#about .cta-btn:hover {
+    background-color: #f5a623; /* Darker golden-orange */
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.portfolio-images img {
+    border-radius: 10px; /* Adjust the value to make the corners more or less rounded */
+}
+.portfolio-images img {
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for effects */
+}
+
+.portfolio-images img:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Footer Styles */
+footer {
+    background-color: #070607;
+    color: #ffcc00;
+    padding: 20px;
+    text-align: center;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+footer p {
+    font-size: 1rem;
+}
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ffcc00;
+}
+/* Social Media Icons Hover Effect */
+footer .social-links a {
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+}
+
+footer .social-links a:hover {
+    transform: scale(1.1); /* Scale the icons */
+    opacity: 0.8; /* Slight opacity change on hover */
+}
+
+/* Contact Email Hover Effect */
+footer p a {
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+footer p a:hover {
+    color: #f39c12; /* Change color on hover */
+}
+/* Adjust space between images */
+footer .portfolio-images img {
+    margin-right: 20px; /* Add space between images */
+    margin-bottom: 20px; /* Add space below images */
+}
+
+footer .portfolio-images img:last-child {
+    margin-right: 0; /* Remove margin from the last image on the row */
+}
+
+
+/* Particles Container */
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Container for content */
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Hero Heading and Paragraph */
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: slideInText 1s ease-out forwards 1s;
+}
+
+p {
+    font-size: 1.5rem;
+    animation: slideInText 1.5s ease-out forwards 1.5s;
+}
+
+/* Call to Action Button */
+.cta-btn {
+    background-color: #ffcc00;
+    color: #070607;
+    padding: 0.75rem 2rem;
+    border: none;
+    font-size: 1.25rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #070607;
+    color: #ffcc00;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+}
