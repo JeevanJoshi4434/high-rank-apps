@@ -101,6 +101,24 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html')); // Updated to point to the 'public' folder
 });
 
+app.get('/send', (req, res) => {
+    res.status(200).json({ success: true });
+});
+
+function functionToActiveServer() {
+    try {
+        const response = axios.get(`${location.protocol}//${location.host}/send`);
+        if(response.status === 200) {
+            console.log('Server is active');
+            return true;
+        }
+    } catch (error) {
+        return false;
+    }
+}
+
+setInterval(functionToActiveServer, 20000);
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
