@@ -104,15 +104,12 @@ app.get('*', (req, res) => {
 app.get('/send', (req, res) => {
     res.status(200).json({ success: true });
 });
-app.get('/send', (req, res) => {
-    res.status(200).json({ success: true });
-});
 
 // This function will check if the server is active
 async function functionToActiveServer() {
     try {
         // Dynamically build the URL using protocol and host
-        const url = `${req.protocol}://${req.get('host')}/send`;
+        const url = `https://high-rank-apps.onrender.com/send`;
 
         // Make the GET request to the /send endpoint
         const response = await axios.get(url);
